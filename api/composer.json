@@ -1,0 +1,8 @@
+{
+    "require": {
+        "mongodb/mongodb": "^1.9",
+        "firebase/php-jwt": "^5.4",
+        "zircote/swagger-php": "^3.2",
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
