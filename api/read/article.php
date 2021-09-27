@@ -17,22 +17,36 @@
 
     $result = $post->readArticle($articleId);
 
-    // print_r($result);
-
     if ($result) {
+        // Call 4th Server for suggestion
+        $s4res = readS4($_GET['id']);
+
         $alldata['status'] = "200";
         $alldata['message'] = "All OK";
         $alldata['article'] = $result;
-        $suggestion = array(
-            'article_id' => '2021ovY09vSI02165056JZR',
-            'small_body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras consecte' );
-        $alldata['suggestions'] = array($suggestion, $suggestion, $suggestion, $suggestion, $suggestion );
-        // print_r($alldata);
+        $alldata['suggestions'] = $s4res->res1;
+        $alldata['same_author'] = $s4res->res2;
+        
         echo json_encode($alldata);
     }
     else {
-        // print_r(array("status" => "400", "message" => "Bad Request"));
         echo json_encode(array("status" => "400", "message" => "Bad Request"));
+    }
+
+    function readS4($art_id)
+    {
+        $url = "http://localhost:8000/Suggestions?article_id=".urlencode($art_id);
+        $ch = curl_init();
+        
+        $payload = array("article_id" => $art_id );
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $res = curl_exec($ch);
+
+        curl_close($ch);
+        
+        return json_decode($res);
     }
 
 ?>

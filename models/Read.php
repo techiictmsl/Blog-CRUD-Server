@@ -40,16 +40,33 @@
      */
     public function readArticle($artid)
     {
-      $query = "SELECT * FROM approvedarticles WHERE article_id='2021Emd0970Z02165054pLs';";
+        $query = "SELECT * FROM approved_articles WHERE article_id='".$artid."';";
+        $query_domain = "SELECT domain FROM domain_filter WHERE article_id='".$artid."';";
+        $query_sub_domain = "SELECT sub_domain FROM subdom_filter WHERE article_id='".$artid."';";
+      
+        $article = $this->getQueryResult($query);
+        $i = 0;
+        foreach ($this->getQueryResult($query_domain) as $row) {
+            $article[0]['domains'][$i++] = $row['domain'];
+        }
+        $i = 0;
+        foreach ($this->getQueryResult($query_sub_domain) as $row) {
+            $article[0]['sub_domains'][$i++] = $row['sub_domain'];
+        }
 
-      $stmt = $this->conn->prepare($query);
+        return $article;
+    }
 
-      $stmt->execute();
+    public function getQueryResult($query)
+    {
+        $stmt = $this->conn->prepare($query);
 
-      $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-      $result = $stmt->fetchAll();
+        $stmt->execute();
 
-      return $result;
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll();
+
+        return $result;
     }
     
   }
