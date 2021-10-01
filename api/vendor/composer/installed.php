@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'a08565126f8f285586147a7ffa5dff4d4674f337',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'a08565126f8f285586147a7ffa5dff4d4674f337',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -53,24 +53,6 @@
             'install_path' => __DIR__ . '/../graham-campbell/result-type',
             'aliases' => array(),
             'reference' => '84afea85c6841deeea872f36249a206e878a5de0',
-            'dev_requirement' => false,
-        ),
-        'jean85/pretty-package-versions' => array(
-            'pretty_version' => '2.0.4',
-            'version' => '2.0.4.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../jean85/pretty-package-versions',
-            'aliases' => array(),
-            'reference' => '694492c653c518456af2805f04eec445b997ed1f',
-            'dev_requirement' => false,
-        ),
-        'mongodb/mongodb' => array(
-            'pretty_version' => '1.9.0',
-            'version' => '1.9.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../mongodb/mongodb',
-            'aliases' => array(),
-            'reference' => '4afe9254e87252879bfbb625858e78fbe072daa0',
             'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(
